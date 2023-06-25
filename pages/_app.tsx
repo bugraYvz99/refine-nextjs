@@ -28,6 +28,7 @@ import { authProvider } from "src/authProvider";
 import { AppIcon } from "src/components/app-icon";
 import { supabaseClient } from "src/utility";
 
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
 };
@@ -99,9 +100,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                   {
                     name: "blog_posts",
                     list: "/blog-posts",
-                    create: "/blog-posts/create",
+                    create:"/blog-posts/create",
                     edit: "/blog-posts/edit/:id",
                     show: "/blog-posts/show/:id",
+                    meta: {
+                      canDelete: true,
+                    },
                   },
                   {
                     name: "categories",

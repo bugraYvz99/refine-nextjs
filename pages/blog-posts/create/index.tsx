@@ -1,3 +1,4 @@
+
 import { MantineCreateInferencer } from "@refinedev/inferencer/mantine";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -6,6 +7,7 @@ import { authProvider } from "src/authProvider";
 
 export default function BlogPostCreate() {
   
+ 
   
   return <MantineCreateInferencer />;
 }
