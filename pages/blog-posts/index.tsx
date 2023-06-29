@@ -20,25 +20,27 @@ export default function BlogPostList() {
 
   const columns = React.useMemo<ColumnDef<IPost>[]>(
     () => [
+       
+        
         {
-            id: "id",
-            header: "ID",
-            accessorKey: "id",
+            id: "title",
+            header: "Title",
+            accessorKey: "title",
         },
         {
+            id: "userID",
+            header: "User Email",
+            accessorKey: "userID",
+        },
+        {
+            id: "content",
+            header: "Content",
+            accessorKey: "content",
+        },{
             id: "created_At",
-            header: "created_At",
+            header: "Created at",
             accessorKey: "created_At",
-        },
-        {
-            id: "Bugranın title",
-            header: "Bugranın title",
-            accessorKey: "Bugranın title",
-        },
-        {
-            id: "bugranın content",
-            header: "bugranın content",
-            accessorKey: "bugranın content",
+        
             cell: function render({ getValue }) {
                 return (
                     <DateField value={getValue() as string} format="LLL" />
@@ -59,12 +61,11 @@ export default function BlogPostList() {
 } = useTable({
     columns,
 });
-console.log(getHeaderGroups())
-console.log(getRowModel())
-console.log(columns)
+
 return (
   <List >
-      <Table>
+      <Table mt={15} bg={"orange"} c={"white"} style={{"display":"grid;",
+    "grid":"row", "gap":"34px"}}>
           <thead>
               {getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
