@@ -1,12 +1,12 @@
-import { MantineListInferencer } from "@refinedev/inferencer/mantine";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
 import { Table, Pagination } from "@mantine/core";
-import { List, DateField } from "@refinedev/mantine";
+import { List, DateField, EditButton } from "@refinedev/mantine";
 import { useTable } from "@refinedev/react-table";
 import { ColumnDef, flexRender } from "@tanstack/react-table";
 import React, { useMemo } from "react";
+import { headers } from "next/dist/client/components/headers";
 
 export default function BlogPostList() {
 
@@ -37,9 +37,9 @@ export default function BlogPostList() {
             header: "Content",
             accessorKey: "content",
         },{
-            id: "created_At",
+            id: "created_at",
             header: "Created at",
-            accessorKey: "created_At",
+            accessorKey: "created_at",
         
             cell: function render({ getValue }) {
                 return (
@@ -92,9 +92,13 @@ return (
                                   cell.getContext(),
                               )}
                           </td>
-                      ))}
+                      ))}<EditButton
+               recordItemId={row.original.id}
+              
+              />
                   </tr>
               ))}
+              
           </tbody>
       </Table>
       <br />

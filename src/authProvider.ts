@@ -130,4 +130,15 @@ export const authProvider: AuthBindings = {
     console.error(error);
     return { error };
   },
-};
+  forgotPassword: async ({ email }) => {
+    
+    const data = await supabaseClient.auth.resetPasswordForEmail(email)
+    console.log(data)
+
+    // if request is successful
+    return {
+        success: true,
+        redirectTo: "/login",
+    };
+  
+}}

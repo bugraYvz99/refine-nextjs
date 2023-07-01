@@ -2,12 +2,18 @@ import { AuthPage, ThemedTitleV2 } from "@refinedev/mantine";
 
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useForgotPassword } from "@refinedev/core";
 
 import { authProvider } from "src/authProvider";
 
 import { AppIcon } from "src/components/app-icon";
 
 export default function ForgotPassword() {
+  const { mutate } = useForgotPassword();
+
+const handleForgotPassword = (values:any) => {
+    mutate(values);
+};
   return (
     <AuthPage
       type="forgotPassword"
